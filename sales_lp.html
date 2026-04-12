@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Partner ／ 営業組織の「なぜ売るか」を言語化する</title>
+<meta name="description" content="営業組織の才能・勝ちパターン・組織の暴走・暴走パターン・抑制の型を言葉にする。マイナスを出さずにプラスを積む組織へ。診断・意味づけ・仕組み設計・AI導入・内製化まで一気通貫で伴走するパートナー。">
+<meta name="keywords" content="営業組織 改革, Sales Partner, 組織コンサル, エンゲージメント, KPI設計, 営業研修, AI導入, 問いかけ型マネジメント">
+<meta name="author" content="KOTOBA WORKS">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://matsumoto-rentaro.com/sales_lp.html">
+
+<!-- OG / Social -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matsumoto-rentaro.com/sales_lp.html">
+<meta property="og:title" content="Sales Partner ／ 営業組織を文化から変える">
+<meta property="og:description" content="仕組みを作るコンサルは100人いる。仕組みが動く土台を作れる人間は、ほぼいない。">
+<meta property="og:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="KOTOBA WORKS">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sales Partner ／ 営業組織を文化から変える">
+<meta name="twitter:description" content="診断・意味づけ・仕組み設計・AI導入まで一気通貫。">
+<meta name="twitter:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+
+<!-- Structured Data: Service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Sales Partner",
+  "serviceType": "営業組織改革コンサルティング",
+  "provider": {
+    "@type": "Person",
+    "name": "KOTOBA WORKS"
+  },
+  "url": "https://matsumoto-rentaro.com/sales_lp.html",
+  "description": "営業組織の才能・勝ちパターン・組織の暴走・暴走パターン・抑制の型を言葉にし、組織の真の勝ちパターンを動かす。診断から実行・内製化まで一気通貫で伴走するパートナーサービス。",
+  "areaServed": "JP",
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "営業組織を持つ企業の経営者・管理者"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Sales Partner Packages",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Starter ／ 営業組織診断",
+        "price": "150000",
+        "priceCurrency": "JPY"
+      },
+      {
+        "@type": "Offer",
+        "name": "Standard ／ 組織改革実行",
+        "price": "1200000",
+        "priceCurrency": "JPY"
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium ／ 営業代行+内製化",
+        "price": "4800000",
+        "priceCurrency": "JPY"
+      }
+    ]
+  }
+}
+</script>
+<style>
+/* ============================================
+   Sales LP — Based on Talent Session LP
+   ============================================ */
+
+/* HERO (Apple-style Pinned Scroll) */
+.hero {
+  position: relative;
+  background: var(--bg);
+  border-top: none !important;
+  overflow: visible;
+  padding: 0;
+  padding-top: 68px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+  align-items: start;
+}
+.hero-left {
+  position: sticky;
+  top: 68px;
+  height: calc(100vh - 68px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-name {
+  font-family: var(--en);
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  color: var(--navy);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: heroFade 1s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-title {
+  font-family: var(--en);
+  font-size: clamp(56px, 8vw, 110px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  margin-bottom: 28px;
+  background: linear-gradient(180deg, var(--text) 0%, var(--text) 60%, #3a4d65 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 0;
+  animation: heroFade 1.2s 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-sub {
+  display: block;
+  font-size: clamp(16px, 1.7vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-sub);
+  line-height: 1.8;
+  opacity: 0;
+  animation: heroFade 1s 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes heroFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 18vh;
+  padding: 22vh 0;
+}
+.hero-story {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-story.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero-story-num {
+  font-family: var(--en);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--terra);
+  margin-bottom: 16px;
+}
+.hero-story-title {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.hero-story-text {
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: var(--text-sub);
+  line-height: 2;
+  max-width: 520px;
+}
+.hero-story-text strong {
+  font-weight: 600;
+  color: var(--navy);
+}
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hero-left { position: relative; top: auto; height: auto; min-height: 70vh; padding-top: 40px; }
+  .hero-right { gap: 60px; padding: 60px 0 100px; }
+}
+
+/* INTRO - 4段階予告 */
+.intro-section {
+  background: var(--bg);
+  padding: clamp(48px, 6vw, 80px) 0;
+}
+.intro-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro-eyebrow {
+  font-family: var(--en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--navy);
+  margin-bottom: 24px;
+}
+.intro-heading {
+  font-size: clamp(24px, 3.4vw, 36px);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.intro-heading em {
+  font-style: normal;
+  color: var(--navy);
+}
+.intro-sub {
+  font-size: 18px;
+  color: var(--text-sub);
+  line-height: 2;
+  margin: 0 auto 40px;
+  max-width: 720px;
+}
+.intro-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.intro-step {
+  flex: 1;
+  min-width: 140px;
+  padding: 0 12px;
+}
+.intro-step-en {
+  font-family: var(--en);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: var(--navy);
+}
+.intro-step:nth-child(3) .intro-step-en { color: #3a5d80; }
+.intro-step:nth-child(5) .intro-step-en { color: #7a6a5a; }
+.intro-step:nth-child(7) .intro-step-en { color: var(--terra); }
+.intro-step-jp {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-sub);
+}
+.intro-arrow {
+  font-size: 18px;
+  color: var(--border);
+}
+@media (max-width: 768px) {
+  .intro-flow { flex-direction: column; gap: 16px; }
+  .intro-arrow { transform: rotate(90deg); }
+}
+
+/* PROBLEM */
+.problem-section {
+  background: var(--bg-card);
+}
+.problem-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.problem-eyebrow {
+  font-family: var(--en);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 40px;
+}
+.problem-stat {
+  font-family: var(--en);
+  font-size: clamp(120px, 18vw, 220px);
+  font-weight: 800;
+  color: var(--terra);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+.problem-stat-unit {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 700;
+  opacity: 0.6;
+}
+.problem-title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.problem-line {
+  width: 56px;
+  height: 2px;
+  background: var(--navy);
+  margin: 32px auto;
+}
+.problem-body {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 2;
+  max-width: 900px;
+  margin: 0 auto 24px;
+}
+.problem-body em {
+  font-style: normal;
+  color: var(--navy);
+  border-bottom: 3px solid var(--navy);
+  padding-bottom: 2px;
+}
+.problem-source {
+  font-family: var(--en);
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 32px;
+  letter-spacing: 0.05em;
+}
+
+/* EVIDENCE */
+.why-section {
+  background: var(--bg);
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+  max-width: 920px;
+}
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--terra));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.why-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
+.why-card:hover::before { transform: scaleX(1); }
+.why-stat {
+  font-family: var(--en);
+  font-size: clamp(56px, 7.2vw, 86px);
+  font-weight: 800;
+  color: var(--terra);
+  line-height: 1;
+  margin-bottom: 14px;
+  letter-spacing: -0.04em;
+  text-shadow: 0 4px 12px rgba(196, 100, 58, 0.18);
+}
+.why-stat .unit {
+  font-family: var(--jp);
+  font-size: 0.35em;
+  font-weight: 700;
+  color: var(--text);
+  margin-left: 6px;
+}
+.why-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.why-desc {
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 1.9;
+}
+.why-source {
+  font-family: var(--en);
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 14px;
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+/* FOR YOU */
+.foryou-section { background: var(--bg-warm); }
+.foryou-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+.foryou-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.foryou-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--terra));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.foryou-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+.foryou-card:hover::before { transform: scaleX(1); }
+.foryou-icon {
+  font-family: var(--en);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--terra);
+  margin-bottom: 20px;
+}
+.foryou-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.foryou-desc {
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 1.9;
+}
+@media (max-width: 768px) {
+  .foryou-grid { grid-template-columns: 1fr; }
+}
+
+/* SOLUTION */
+.approach-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin-top: 56px;
+}
+@media (max-width: 1100px) {
+  .approach-list { grid-template-columns: repeat(3, 1fr) !important; gap: 24px !important; }
+}
+@media (max-width: 720px) {
+  .approach-list { grid-template-columns: repeat(2, 1fr) !important; gap: 18px !important; }
+}
+.approach-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.approach-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--terra));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.approach-item:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
+.approach-item:hover::before { transform: scaleX(1); }
+.approach-num {
+  font-family: var(--en);
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+  display: block;
+  opacity: 0.9;
+}
+.approach-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+.approach-desc {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.85;
+}
+
+/* WHAT CHANGES — Phase */
+.outcome-section { background: var(--bg); }
+.outcome-phases {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 56px;
+  max-width: 900px;
+}
+.phase {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.phase::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--navy);
+}
+.phase:nth-child(2)::before { background: #3a5d80; }
+.phase:nth-child(3)::before { background: #7a6a5a; }
+.phase:nth-child(4)::before { background: var(--terra); }
+.phase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--terra));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+.phase:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+.phase:hover::after { transform: scaleX(1); }
+.phase-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-en {
+  font-family: var(--en);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-shadow: 0 4px 16px rgba(30, 58, 95, 0.15);
+}
+.phase:nth-child(2) .phase-en { color: #3a5d80; }
+.phase:nth-child(3) .phase-en { color: #7a6a5a; }
+.phase:nth-child(4) .phase-en { color: var(--terra); }
+.phase-jp {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+.phase-num {
+  font-family: var(--en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--text-light);
+  margin-left: auto;
+}
+.phase-item-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.phase-item-desc {
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 1.9;
+}
+
+/* PACKAGES */
+.pkg-section { background: var(--bg-warm); }
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+  max-width: 1080px;
+}
+.pkg-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 44px 36px 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pkg-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--terra));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pkg-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
+.pkg-card:hover::before { transform: scaleX(1); }
+.pkg-card.featured {
+  border: 2px solid var(--navy);
+  transform: translateY(-6px);
+}
+.pkg-card.featured::after {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: var(--en);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #fff;
+  background: var(--navy);
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+.pkg-name {
+  font-family: var(--en);
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.pkg-tag {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 24px;
+}
+.pkg-price {
+  font-family: var(--en);
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.pkg-duration {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.pkg-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+}
+.pkg-list li {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.9;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+.pkg-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--navy);
+}
+.pkg-for {
+  font-size: 12px;
+  color: var(--text-light);
+  padding: 14px 0 0;
+  border-top: 1px dashed var(--border);
+  line-height: 1.7;
+}
+.pkg-for strong {
+  display: block;
+  font-family: var(--en);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+  font-size: 10px;
+}
+@media (max-width: 900px) {
+  .pkg-grid { grid-template-columns: 1fr; }
+  .pkg-card.featured { transform: none; }
+}
+
+/* FAQ */
+.faq-section { background: var(--bg); }
+.faq-list {
+  max-width: 880px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.4s, border-color 0.4s;
+}
+.faq-item[open] { box-shadow: var(--shadow-md); border-color: rgba(30,58,95,0.15); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: background 0.3s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { background: var(--bg); }
+.faq-q-mark {
+  font-family: var(--en);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--terra);
+  margin-right: 4px;
+}
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-icon::before, .faq-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background: var(--navy);
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-item[open] .faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.faq-body {
+  padding: 0 28px 24px 28px;
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 1.9;
+}
+
+/* CTA */
+.cta-section {
+  background: var(--bg-card);
+  border-top: none !important;
+  overflow: hidden;
+  position: relative;
+  padding: clamp(100px, 14vw, 160px) 0;
+}
+.cta-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.12;
+}
+.cta-orb-1 {
+  width: 600px; height: 600px;
+  background: var(--navy);
+  top: -10%; left: -10%;
+}
+.cta-orb-2 {
+  width: 400px; height: 400px;
+  background: var(--terra);
+  bottom: -10%; right: -5%;
+}
+.cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cta-eyebrow {
+  font-family: var(--en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 20px;
+}
+.cta-heading {
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.cta-sub {
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 2;
+  margin-bottom: 40px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 56px;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--jp);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.2);
+}
+.cta-btn:hover {
+  background: #15304f;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(30, 58, 95, 0.3);
+}
+.cta-btn-arrow { font-size: 20px; transition: transform 0.3s; }
+.cta-btn:hover .cta-btn-arrow { transform: translateX(6px); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">KOTOBA WORKS</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="site-cta">Get in Touch</a>
+    <button class="site-nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main style="padding-top:0;">
+
+<!-- HERO (Pinned Scroll) -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <p class="hero-name">KOTOBA WORKS</p>
+      <h1 class="hero-title">Sales<br>Partner</h1>
+      <span class="hero-sub">仕組みを作るコンサルは100人いる。<br>仕組みが動く土台を作れる人間は、ほぼいない。</span>
+    </div>
+    <div class="hero-right">
+      <div class="hero-story">
+        <div class="hero-story-num">01 ／ REALITY</div>
+        <div class="hero-story-title">仕組みを入れても、<br>人が動かない。</div>
+        <p class="hero-story-text">
+          KPI設計、研修、ツール導入。<br>
+          どれだけ整えても営業組織が動き出さないのは、<br>
+          <strong>「なぜ売るか」が言語化されていない</strong>からです。
+        </p>
+      </div>
+      <div class="hero-story">
+        <div class="hero-story-num">02 ／ CORE</div>
+        <div class="hero-story-title">本当の課題は<br>「人の心の向き」。</div>
+        <p class="hero-story-text">
+          完璧な仕組みも、<br>
+          <strong>営業マンが「やる価値」を感じなければ</strong>、<br>
+          属人化と我流に戻っていく。そこに本質があります。
+        </p>
+      </div>
+      <div class="hero-story">
+        <div class="hero-story-num">03 ／ PARTNER</div>
+        <div class="hero-story-title">診断から実行まで、<br>伴走します。</div>
+        <p class="hero-story-text">
+          診断 → 意味づけセッション<br>
+          → 仕組み設計 → AI導入 → 内製化。<br>
+          <strong>一気通貫で営業組織を変える</strong>パートナーです。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO - 4段階予告 -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-inner">
+      <div class="intro-eyebrow fi">WHAT YOU'LL EXPERIENCE</div>
+      <h2 class="intro-heading fi d1">
+        診断から自走まで、<br>
+        <em>4つの段階</em>で変わります。
+      </h2>
+      <p class="intro-sub fi d2">
+        まず現在地を知る。心の向きを変える。仕組みを作る。<br>
+        そして自走する組織になる。
+      </p>
+      <div class="intro-flow fi d3">
+        <div class="intro-step">
+          <div class="intro-step-en">AWARE</div>
+          <div class="intro-step-jp">現状認識</div>
+        </div>
+        <div class="intro-arrow">&rarr;</div>
+        <div class="intro-step">
+          <div class="intro-step-en">ENGAGE</div>
+          <div class="intro-step-jp">意味づけ</div>
+        </div>
+        <div class="intro-arrow">&rarr;</div>
+        <div class="intro-step">
+          <div class="intro-step-en">SYSTEM</div>
+          <div class="intro-step-jp">仕組化</div>
+        </div>
+        <div class="intro-arrow">&rarr;</div>
+        <div class="intro-step">
+          <div class="intro-step-en">AUTO</div>
+          <div class="intro-step-jp">自走化</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <div class="problem-inner">
+      <div class="problem-eyebrow fi">THE PROBLEM</div>
+      <div class="problem-stat fi d1">75<span class="problem-stat-unit">%</span></div>
+      <div class="problem-title fi d2">営業プロセスを導入した企業の<br>4社に3社が、3ヶ月で形骸化する。</div>
+      <div class="problem-line fi d3"></div>
+      <div class="problem-body fi d3">
+        KPI・ツール・研修をいくら入れても、<em>「なぜそれをするか」</em>がメンバーに落ちていなければ、<br>
+        自主的には実行されない。属人化と我流に戻っていくだけ。
+      </div>
+      <div class="problem-source fi d4">CSO Insights "Sales Performance Optimization Study" 2019 / Miller Heiman Group</div>
+    </div>
+  </div>
+</section>
+
+<!-- EVIDENCE -->
+<section class="why-section">
+  <div class="container">
+    <p class="label fi">THE EVIDENCE</p>
+    <h2 class="heading fi d1">なぜ「意味づけ」から始めるのか。</h2>
+    <p class="subtext fi d2">学術研究が、組織変革の本当のドライバーを定量的に示しています。</p>
+    <div class="why-grid">
+      <div class="why-card fi d1">
+        <div class="why-stat">18<span class="unit">%</span></div>
+        <div class="why-title">エンゲージメントが高い<br>営業チームは売上も高い</div>
+        <div class="why-desc">職場エンゲージメントが高いチームは、そうでないチームより売上が18%高い。Gallupメタ分析が示した結論。</div>
+        <div class="why-source">Gallup Q12 Engagement Meta-Analysis 2023</div>
+      </div>
+      <div class="why-card fi d2">
+        <div class="why-stat">42<span class="unit">%</span></div>
+        <div class="why-title">対話型マネジメントは<br>部下の自主性を42%高める</div>
+        <div class="why-desc">命令型から対話型へマネジメントを転換すると、部下の「自分で考える癖」がつき、施策への当事者意識が劇的に高まる。</div>
+        <div class="why-source">McKinsey Quarterly 2022 / The New Essence of Management</div>
+      </div>
+      <div class="why-card fi d3">
+        <div class="why-stat">64<span class="unit">%</span></div>
+        <div class="why-title">AIツールを導入した営業部門の<br>64%が定着に失敗する</div>
+        <div class="why-desc">AIツール導入時、「なぜ使うか」が明確でないと現場は使わなくなる。技術ではなく意味づけが鍵。</div>
+        <div class="why-source">Forrester "AI-powered Sales Technology Adoption" 2024</div>
+      </div>
+      <div class="why-card fi d4">
+        <div class="why-stat">2<span class="unit">倍</span></div>
+        <div class="why-title">属人化した営業組織は<br>採用コストが2倍になる</div>
+        <div class="why-desc">「○○さんにしかできない営業」の組織は、採用・育成・定着コストが倍増。離職時のナレッジロスも深刻。</div>
+        <div class="why-source">中小企業庁「中小企業白書」2023 / 人材確保・定着に関する調査</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR YOU -->
+<section class="foryou-section">
+  <div class="container">
+    <p class="label fi">FOR YOU</p>
+    <h2 class="heading fi d1">こんな経営者・営業部長のための<br>パートナーです。</h2>
+    <p class="subtext fi d2">1つでも当てはまったら、一度お話しさせてください。</p>
+    <div class="foryou-grid">
+      <div class="foryou-card fi d1">
+        <div class="foryou-icon">01 ／ LEADER</div>
+        <div class="foryou-title">離職が続き、<br>採用しても育たない</div>
+        <div class="foryou-desc">KPIは上がっているのに組織が重くなっている。何が問題か分からなくなっている営業部長。</div>
+      </div>
+      <div class="foryou-card fi d2">
+        <div class="foryou-icon">02 ／ FOUNDER</div>
+        <div class="foryou-title">自分が営業の<br>大部分を占めている</div>
+        <div class="foryou-desc">売上は伸びているのに、チームに任せると成果が落ちる。属人化から抜け出せない経営者。</div>
+      </div>
+      <div class="foryou-card fi d3">
+        <div class="foryou-icon">03 ／ MANAGER</div>
+        <div class="foryou-title">マネジメント研修が<br>現場に活きない</div>
+        <div class="foryou-desc">研修は受けたが、部下が何を求めているか分からない。人を動かす難しさに直面している若手マネージャー。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section>
+  <div class="container">
+    <p class="label fi">THE SOLUTION</p>
+    <h2 class="heading fi d1">5つを言葉にして、<br>営業組織が動き出す。</h2>
+    <p class="subtext fi d2">強みだけ知っても、組織は動けない。<br>組織の暴走まで知って、はじめて持続的に勝てる組織になる。</p>
+    <div class="approach-list">
+      <div class="approach-item fi d1">
+        <div class="approach-num">01</div>
+        <div class="approach-title">組織の才能</div>
+        <div class="approach-desc">この組織が他社よりも自然にうまくできていること。生まれつきの強み・空気・組織の癖。</div>
+      </div>
+      <div class="approach-item fi d2">
+        <div class="approach-num">02</div>
+        <div class="approach-title">組織の勝ちパターン</div>
+        <div class="approach-desc">その才能が結果に変わる、組織独自の動き方の構造。再現できる形で言語化する。</div>
+      </div>
+      <div class="approach-item fi d3">
+        <div class="approach-num">03</div>
+        <div class="approach-title">組織の欠点<span style="font-size:0.7em;font-weight:500;opacity:.7;">（才能の暴走）</span></div>
+        <div class="approach-desc">その才能が「効きすぎ」「やりすぎ」で、自分の組織を傷めている状態。離職・形骸化・属人化の根本原因。</div>
+      </div>
+      <div class="approach-item fi d4">
+        <div class="approach-num">04</div>
+        <div class="approach-title">暴走パターン</div>
+        <div class="approach-desc">どんなタイミング・状況・心理で組織の暴走が起きるのか。引き金（トリガー）と兆候を言語化する。</div>
+      </div>
+      <div class="approach-item fi d5">
+        <div class="approach-num">05</div>
+        <div class="approach-title">組織の抑制の型</div>
+        <div class="approach-desc">暴走を起こさないためのKPI設計・会議体・行動規範・チェックポイント。組織専用のブレーキの設計図。</div>
+      </div>
+    </div>
+    <p class="subtext fi d5" style="margin-top:48px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto;">
+      この5つが揃ったとき、はじめて組織の<strong style="color:var(--navy);">真の勝ちパターン</strong>が動き出す。<br>
+      マイナスを出さずに、プラスだけを積み続けられる組織へ。
+    </p>
+  </div>
+</section>
+
+<!-- WHAT CHANGES -->
+<section class="outcome-section">
+  <div class="container">
+    <p class="label fi">WHAT CHANGES</p>
+    <h2 class="heading fi d1">営業組織が、4段階で変わる。</h2>
+    <p class="subtext fi d2">パッケージはゴールではなく、組織の成長プロセスです。</p>
+    <div class="outcome-phases">
+
+      <div class="phase fi d1">
+        <div class="phase-head">
+          <div class="phase-en">AWARE</div>
+          <div class="phase-jp">現状認識</div>
+          <div class="phase-num">STAGE 01</div>
+        </div>
+        <div class="phase-item-title">課題が「仕組み不足」ではなく「意味の不在」だと見える</div>
+        <div class="phase-item-desc">診断を通じて、メンバーの離職理由が「給料」ではなく「仕事の意味が見えない」ことだと気づく瞬間。</div>
+      </div>
+
+      <div class="phase fi d2">
+        <div class="phase-head">
+          <div class="phase-en">ENGAGE</div>
+          <div class="phase-jp">心の向き転換</div>
+          <div class="phase-num">STAGE 02</div>
+        </div>
+        <div class="phase-item-title">メンバーの自主性が生まれ、施策が定着する</div>
+        <div class="phase-item-desc">エンゲージメント向上セッションを通じて、個人の軸とチームの目的が接続される。研修や施策の定着が劇的に改善。</div>
+      </div>
+
+      <div class="phase fi d3">
+        <div class="phase-head">
+          <div class="phase-en">SYSTEM</div>
+          <div class="phase-jp">仕組みの整備</div>
+          <div class="phase-num">STAGE 03</div>
+        </div>
+        <div class="phase-item-title">属人化が減り、チーム全体の生産性が上がる</div>
+        <div class="phase-item-desc">KPI再設計、業務フロー最適化、マネジメント研修により、「人に頼らない営業仕組み」が完成。</div>
+      </div>
+
+      <div class="phase fi d4">
+        <div class="phase-head">
+          <div class="phase-en">AUTO</div>
+          <div class="phase-jp">自走化</div>
+          <div class="phase-num">STAGE 04</div>
+        </div>
+        <div class="phase-item-title">外部サポートなしでも営業チームが自律的に実行する</div>
+        <div class="phase-item-desc">ノウハウ移植・OJT・内製化サポートにより、代行メンバーなしで目標の80%以上を達成。持続的な成長へ。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="pkg-section">
+  <div class="container">
+    <p class="label fi">PACKAGES</p>
+    <h2 class="heading fi d1">3つのパッケージ。</h2>
+    <p class="subtext fi d2">課題の深さとゴールに応じた、3つの選択肢。</p>
+    <div class="pkg-grid">
+
+      <div class="pkg-card fi d1">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-tag">まず知る</div>
+        <div class="pkg-price">¥150,000</div>
+        <div class="pkg-duration">2〜4 weeks</div>
+        <ul class="pkg-list">
+          <li>営業組織診断</li>
+          <li>全メンバーへのヒアリング</li>
+          <li>改善提案書</li>
+          <li>90分の経営者フィードバック面談</li>
+        </ul>
+        <div class="pkg-for">
+          <strong>RECOMMENDED FOR</strong>
+          課題はあるが何が問題か分からない経営者
+        </div>
+      </div>
+
+      <div class="pkg-card featured fi d2">
+        <div class="pkg-name">Standard</div>
+        <div class="pkg-tag">変える</div>
+        <div class="pkg-price">¥1,200,000</div>
+        <div class="pkg-duration">3 months ／ 月額 ¥400,000 × 3ヶ月</div>
+        <ul class="pkg-list">
+          <li>Starter の全内容</li>
+          <li>エンゲージメント向上セッション</li>
+          <li>KPI設計 + 業務フロー再設計</li>
+          <li>マネジメント研修（半日×2回）</li>
+          <li>月額営業顧問（月4回MTG）</li>
+          <li>AI導入設計</li>
+        </ul>
+        <div class="pkg-for">
+          <strong>RECOMMENDED FOR</strong>
+          「仕組みは入れたが人が動かない」経営者・営業部長
+        </div>
+      </div>
+
+      <div class="pkg-card fi d3">
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-tag">任せる</div>
+        <div class="pkg-price">¥4,800,000</div>
+        <div class="pkg-duration">6 months ／ 月額 ¥800,000 × 6ヶ月</div>
+        <ul class="pkg-list">
+          <li>Standard の全内容</li>
+          <li>資産になるBPO（営業代行）</li>
+          <li>ノウハウ横展開</li>
+          <li>内製化伴走（代行→自走）</li>
+          <li>月次成果レポート</li>
+          <li>経営者との週次MTG</li>
+        </ul>
+        <div class="pkg-for">
+          <strong>RECOMMENDED FOR</strong>
+          「丸ごと任せたい」「ゼロから作り直したい」経営者
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <p class="label fi">FAQ</p>
+    <h2 class="heading fi d1">よくあるご質問</h2>
+    <p class="subtext fi d2">ご相談の前に、気になることがあれば。</p>
+    <div class="faq-list">
+      <details class="faq-item fi d1">
+        <summary>
+          <span><span class="faq-q-mark">Q.</span>診断だけで本当に改善につながりますか？</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-body">Starterの診断後、クライアントからは平均30〜50個の改善ヒントが出ています。ただし診断は「現在地の認識」に過ぎません。改革実行（Standard以上）までセットで初めて行動変化につながります。</div>
+      </details>
+      <details class="faq-item fi d1">
+        <summary>
+          <span><span class="faq-q-mark">Q.</span>マネジメント研修は「コンサル的」な研修ですか？</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-body">いいえ。通常の研修は「テクニックの伝授」ですが、私たちのアプローチは「考え方の転換」に重点をおきます。対話型1on1の実例練習を半日×2回で集中実施。受講後すぐに現場で使える状態にします。</div>
+      </details>
+      <details class="faq-item fi d1">
+        <summary>
+          <span><span class="faq-q-mark">Q.</span>AI導入支援ではどんなツールを勧めますか？</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-body">特定ツールを勧めることはありません。御社の営業プロセス・組織規模・予算に応じて最適なツールを提案します。重要なのは「導入」ではなく「チームが納得して使い続ける状態」を作ることです。</div>
+      </details>
+      <details class="faq-item fi d1">
+        <summary>
+          <span><span class="faq-q-mark">Q.</span>営業代行は「下請け」ですか？</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-body">いいえ。これは「資産になるBPO」です。代行しながら「やり方」をクライアント営業チームに移植します。結果として、代行が終わった後もノウハウが組織に残り、自走できるようになります。</div>
+      </details>
+      <details class="faq-item fi d1">
+        <summary>
+          <span><span class="faq-q-mark">Q.</span>契約後、すぐに開始できますか？</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-body">Starterなら2週間で開始可能。Standard以上は初回MTGで全体スケジュール確定。毎月「月初に来月の計画」を立てるため、忙しい時期の調整もしやすいです。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-orb cta-orb-1"></div>
+  <div class="cta-orb cta-orb-2"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-eyebrow fi">YOUR TURN</div>
+      <h2 class="cta-heading fi d1">営業組織の本当の課題、<br>一緒に見つけませんか。</h2>
+      <p class="cta-sub fi d2">
+        無料30分の初期相談で、「御社の営業の本当の課題」をお話しします。<br>
+        まずはお気軽にメールで、ひとことお寄せください。
+      </p>
+      <div class="fi d3">
+        <a href="https://docs.google.com/forms/d/e/10u4a_Bg8VoNrBMukq2i37kIqD5KA8Ux3VdbtTct5qFQ/viewform" class="cta-btn">無料相談に申し込む <span class="cta-btn-arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+      <div class="site-footer-brand">
+        <h3>KOTOBA WORKS</h3>
+        <p>言葉にする。世界が動き出す。</p>
+      </div>
+      <div class="site-footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="session_lp.html">Talent Session</a></li>
+          <li><a href="sales_lp.html">Sales Partner</a></li>
+          <li><a href="packages.html">All Packages</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div class="site-footer-sign">KOTOBA WORKS</div>
+      <div class="site-footer-copy">&copy; 2026 KOTOBA WORKS.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/shared.js"></script>
+<script>
+// Hero story (pinned scroll reveal)
+const storyObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    } else {
+      e.target.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.hero-story').forEach(el => storyObs.observe(el));
+</script>
+</body>
+</html>

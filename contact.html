@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact ／ KOTOBA WORKS</title>
+<meta name="description" content="Talent Session や Sales Partner のお問い合わせはこちらから。">
+<meta name="author" content="KOTOBA WORKS">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="https://matsumoto-rentaro.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matsumoto-rentaro.com/contact.html">
+<meta property="og:title" content="Contact ／ KOTOBA WORKS">
+<meta property="og:description" content="お問い合わせ・相談はこちらから。">
+<meta property="og:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="KOTOBA WORKS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact ／ KOTOBA WORKS">
+<meta name="twitter:description" content="お問い合わせ・相談はこちらから。">
+<meta name="twitter:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+  .contact-hero {
+    padding: 160px 0 80px;
+    text-align: center;
+    border-top: none !important;
+    position: relative;
+  }
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(1000px, 90vw);
+    height: min(1000px, 90vw);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center, rgba(30,58,95,0.06) 0%, rgba(196,100,58,0.04) 30%, transparent 60%);
+    z-index: 0;
+    animation: ambientPulse 10s ease-in-out infinite;
+  }
+  @keyframes ambientPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .contact-hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .contact-eyebrow {
+    font-family: var(--en);
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    color: var(--navy);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fade 1s 0.2s forwards;
+  }
+  .contact-title {
+    font-family: var(--en);
+    font-size: clamp(56px, 9vw, 140px);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+  .contact-title .w {
+    display: inline-block;
+    overflow: hidden;
+  }
+  .contact-title .w span {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: up 1s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .contact-title .accent {
+    color: var(--text);
+  }
+  @keyframes up { to { transform: translateY(0); } }
+  @keyframes fade { to { opacity: 1; } }
+
+  /* Contact cards */
+  .contact-cards {
+    padding: 60px 0 100px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  .cc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 56px 44px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .cc::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--navy), var(--terra));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .cc:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+  }
+  .cc:hover::before { transform: scaleX(1); }
+  .cc-num {
+    font-family: var(--en);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .cc-h {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: auto;
+    padding-bottom: 32px;
+  }
+  .cc-go {
+    font-family: var(--en);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .cc-arrow { transition: transform 0.3s; }
+  .cc:hover .cc-arrow { transform: translateX(6px); }
+
+  /* Info */
+  .info {
+    padding: clamp(60px, 8vw, 100px) 0;
+    background: var(--bg-warm);
+    text-align: center;
+  }
+  .info-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .info-heading {
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 48px;
+    letter-spacing: -0.01em;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+  }
+  .info-row:last-child { border-bottom: 1px solid var(--border); }
+  .info-k {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+  .info-v {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .info-v a {
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .info-v a:hover { border-color: var(--navy); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">KOTOBA WORKS</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <a href="contact.html" class="site-cta">Get in Touch</a>
+    <button class="site-nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="contact-hero-inner">
+    <div class="contact-eyebrow">— CONTACT —</div>
+    <h1 class="contact-title">
+      <span class="w w1"><span>Get in</span></span><br>
+      <span class="w w2 accent"><span>Touch.</span></span>
+    </h1>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="contact-cards">
+  <div class="container">
+    <div class="contact-grid">
+
+      <a href="https://docs.google.com/forms/d/e/1YElJjBo5r_0FqFNC-h9q1BND5jxzpLbufU1U2TMQ95A/viewform" class="cc fi d1">
+        <div class="cc-num">01 ／ INDIVIDUAL</div>
+        <div class="cc-h">Talent<br>Session</div>
+        <div class="cc-go">SEND EMAIL <span class="cc-arrow">&rarr;</span></div>
+      </a>
+
+      <a href="https://docs.google.com/forms/d/e/10u4a_Bg8VoNrBMukq2i37kIqD5KA8Ux3VdbtTct5qFQ/viewform" class="cc fi d2">
+        <div class="cc-num">02 ／ ORGANIZATION</div>
+        <div class="cc-h">Sales<br>Partner</div>
+        <div class="cc-go">SEND EMAIL <span class="cc-arrow">&rarr;</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info">
+  <div class="container">
+    <div class="info-inner">
+      <h2 class="info-heading fi">直接メールでも構いません。</h2>
+      <div class="info-row fi d1">
+        <span class="info-k">Email</span>
+        <span class="info-v"><a href="mailto:kotobaworks.info@gmail.com">kotobaworks.info@gmail.com</a></span>
+      </div>
+      <div class="info-row fi d2">
+        <span class="info-k">Response</span>
+        <span class="info-v">2 営業日以内</span>
+      </div>
+      <div class="info-row fi d3">
+        <span class="info-k">Location</span>
+        <span class="info-v">Tokyo, Japan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+      <div class="site-footer-brand">
+        <h3>KOTOBA WORKS</h3>
+        <p>言葉にする。世界が動き出す。</p>
+      </div>
+      <div class="site-footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="session_lp.html">Talent Session</a></li>
+          <li><a href="sales_lp.html">Sales Partner</a></li>
+          <li><a href="packages.html">All Packages</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div class="site-footer-sign">KOTOBA WORKS</div>
+      <div class="site-footer-copy">&copy; 2026 KOTOBA WORKS.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/shared.js"></script>
+</body>
+</html>

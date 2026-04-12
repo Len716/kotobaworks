@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fafaf8"/>
+  <text x="80" y="120" font-family="Inter, sans-serif" font-size="16" font-weight="500" fill="#777777" letter-spacing="4" text-transform="uppercase">— KOTOBA WORKS</text>
+  <text x="80" y="300" font-family="Inter, sans-serif" font-size="96" font-weight="700" fill="#1a1a1a" letter-spacing="-3">Into Words.</text>
+  <text x="80" y="410" font-family="Inter, sans-serif" font-size="96" font-weight="700" fill="#1a1a1a" letter-spacing="-3">Into World.</text>
+  <text x="80" y="520" font-family="Noto Sans JP, sans-serif" font-size="22" font-weight="400" fill="#555555">言葉にする。世界が動き出す。</text>
+  <text x="80" y="555" font-family="Noto Sans JP, sans-serif" font-size="18" font-weight="400" fill="#777777">AI × 対話で、人と組織の才能を言葉にする。</text>
+  <line x1="80" y1="585" x2="180" y2="585" stroke="#1a1a1a" stroke-width="2"/>
+</svg>

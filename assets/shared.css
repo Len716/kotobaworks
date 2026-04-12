@@ -1,0 +1,642 @@
+/* ============================================
+   Matsumoto Rentaro - Shared Design System
+   Based on Talent Session LP (session_lp.html)
+   ============================================ */
+
+/* Reset */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Colors */
+  --bg: #fafaf8;
+  --bg-warm: #f5f2ed;
+  --bg-card: #ffffff;
+  --text: #1a1a1a;
+  --text-sub: #555555;
+  --text-light: #777777;
+  --navy: #1e3a5f;
+  --navy-light: #2a5080;
+  --terra: #c4643a;
+  --border: #e5e3df;
+
+  /* Typography */
+  --en: 'Inter', sans-serif;
+  --jp: 'Noto Sans JP', sans-serif;
+  --serif: 'Noto Serif JP', 'Playfair Display', serif;
+
+  /* Layout */
+  --max: 1120px;
+  --pad: clamp(64px, 7.5vw, 96px);
+  --radius: 16px;
+
+  /* Shadows (4-tier Apple-style) */
+  --shadow-sm: 0 1px 2px rgba(15, 30, 60, 0.04),
+               0 2px 8px rgba(15, 30, 60, 0.04);
+  --shadow-md: 0 1px 3px rgba(15, 30, 60, 0.05),
+               0 4px 16px rgba(15, 30, 60, 0.06),
+               0 12px 32px rgba(15, 30, 60, 0.05);
+  --shadow-lg: 0 2px 6px rgba(15, 30, 60, 0.06),
+               0 12px 32px rgba(15, 30, 60, 0.08),
+               0 32px 80px rgba(15, 30, 60, 0.08);
+  --shadow-xl: 0 4px 12px rgba(30, 58, 95, 0.08),
+               0 16px 48px rgba(30, 58, 95, 0.12),
+               0 40px 100px rgba(30, 58, 95, 0.14);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--jp);
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Layout */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+section {
+  padding: var(--pad) 0;
+  position: relative;
+}
+
+section + section {
+  border-top: 1px solid var(--border);
+}
+
+/* Fade-in Observer Pattern */
+.fi {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fi.v { opacity: 1; transform: translateY(0); }
+.fi.d1 { transition-delay: 0.1s; }
+.fi.d2 { transition-delay: 0.2s; }
+.fi.d3 { transition-delay: 0.3s; }
+.fi.d4 { transition-delay: 0.4s; }
+.fi.d5 { transition-delay: 0.5s; }
+
+/* Typography Base */
+.label {
+  font-family: var(--en);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.heading {
+  font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+.subtext {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-sub);
+  line-height: 1.9;
+  max-width: 720px;
+}
+
+/* ============================================
+   GLOBAL HEADER
+   ============================================ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 250, 248, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s, background 0.4s;
+}
+.site-header.scrolled {
+  border-color: var(--border);
+}
+.site-header-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px clamp(20px, 5vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.site-logo {
+  font-family: var(--en);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.site-logo:hover { color: var(--navy); }
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.site-nav a {
+  font-family: var(--jp);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-sub);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+.site-nav a:hover { color: var(--navy); }
+.site-nav a.active { color: var(--navy); }
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: var(--navy);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.site-nav a:hover::after, .site-nav a.active::after { transform: scaleX(1); }
+.site-cta {
+  font-family: var(--jp);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 22px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.site-cta:hover {
+  background: #15304f;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.25);
+}
+.site-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px;
+}
+@media (max-width: 768px) {
+  .site-nav, .site-cta { display: none; }
+  .site-nav-toggle { display: block; }
+  .site-nav.open {
+    display: flex;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    padding: 32px;
+    gap: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* Main wrapper (account for fixed header) */
+main { padding-top: 68px; }
+
+/* ============================================
+   GLOBAL FOOTER
+   ============================================ */
+.site-footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 64px 0 32px;
+}
+.site-footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+.site-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.site-footer-brand h3 {
+  font-family: var(--en);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.site-footer-brand p {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.8;
+  max-width: 360px;
+}
+.site-footer-col h4 {
+  font-family: var(--en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+.site-footer-col ul {
+  list-style: none;
+}
+.site-footer-col li {
+  margin-bottom: 12px;
+}
+.site-footer-col a {
+  font-size: 14px;
+  color: var(--text-sub);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.site-footer-col a:hover { color: var(--navy); }
+.site-footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.site-footer-sign {
+  font-family: var(--en);
+  font-size: 11px;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+}
+.site-footer-copy {
+  font-family: var(--en);
+  font-size: 11px;
+  color: var(--text-light);
+}
+@media (max-width: 768px) {
+  .site-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ============================================
+   COMMON CARD
+   ============================================ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--terra));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 36px;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--jp);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.btn-primary:hover {
+  background: #15304f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(30, 58, 95, 0.25);
+}
+.btn-primary-arrow {
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+.btn-primary:hover .btn-primary-arrow {
+  transform: translateX(4px);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 32px;
+  background: transparent;
+  color: var(--navy);
+  font-family: var(--jp);
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+.btn-outline:hover {
+  background: var(--navy);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE — Mobile (iPhone)
+   ============================================ */
+/* ============================================
+   MOBILE — 見やすさ・わかりやすさ最優先
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* --- Global --- */
+  body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+  img, svg, video { max-width: 100%; height: auto; }
+  section { padding: 56px 0; }
+
+  /* --- Header (compact) --- */
+  .site-header-inner { padding: 12px 16px !important; }
+  .site-logo { font-size: 13px !important; letter-spacing: 0.1em !important; }
+  main { padding-top: 56px !important; }
+
+  /* --- Typography: スマホで読みやすいサイズ --- */
+  h1, .hero-title, .about-hero-h, .services-title, .svc-h {
+    font-size: clamp(36px, 10vw, 52px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.03em !important;
+  }
+  h2, .heading {
+    font-size: clamp(24px, 6.5vw, 32px) !important;
+    line-height: 1.35 !important;
+  }
+  h3 { font-size: 20px !important; }
+  p, li, .subtext {
+    font-size: 15px !important;
+    line-height: 1.9 !important;
+  }
+  .label {
+    font-size: 11px !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* --- Grids: 全て1列に --- */
+  .svc-inner,
+  .facts-row,
+  .two-col,
+  .grid-2,
+  .approach-list,
+  .foryou-grid,
+  .foryou-grid-5,
+  .why-grid,
+  .pkg-grid-2,
+  .pkg-grid-3,
+  .outcome-phases,
+  .mode-grid,
+  .site-footer-grid,
+  .cta-buttons,
+  .compare-row {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  /* フッターのgridも1列 */
+  .site-footer-grid { gap: 32px !important; }
+
+  /* --- Hero sections --- */
+  .hero,
+  .services-hero,
+  .about-hero-section,
+  .about-hero,
+  .lp-hero {
+    min-height: auto !important;
+    padding: 80px 0 48px !important;
+  }
+  .hero-inner,
+  .services-hero-inner,
+  .about-hero-inner {
+    padding: 0 20px !important;
+  }
+
+  /* --- Services page --- */
+  .svc-block { padding: 48px 0 !important; }
+  .svc-inner { padding: 0 20px !important; }
+  .svc-meta-block {
+    position: relative !important;
+    top: auto !important;
+  }
+  .svc-no { font-size: 72px !important; margin-bottom: 16px !important; }
+  .svc-lbl { font-size: 13px !important; }
+  .svc-tag { font-size: 15px !important; }
+  .svc-btn { padding: 14px 28px !important; font-size: 13px !important; }
+
+  /* --- Session LP hero: スマホでは1列に --- */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding: 0 20px !important;
+  }
+  .hero-left {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 70vh;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-right {
+    gap: 64px !important;
+    padding: 48px 0 80px !important;
+  }
+  .hero-title { font-size: clamp(48px, 14vw, 72px) !important; }
+  .hero-name { font-size: 11px !important; }
+  .hero-sub { font-size: 15px !important; }
+  .hero-story-num { font-size: 11px !important; }
+  .hero-story-title { font-size: clamp(24px, 6vw, 30px) !important; line-height: 1.4 !important; }
+  .hero-story-text { font-size: 14px !important; line-height: 1.85 !important; }
+  /* スクロール連動を保持（opacityはJSで制御） */
+  .hero-story { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+  .hero-story.visible { opacity: 1; transform: translateY(0); }
+
+  /* --- Cards: タップしやすく --- */
+  .card,
+  .approach-item,
+  .foryou-card,
+  .why-card,
+  .mode-card,
+  .pkg-card,
+  .pkg-sales,
+  .cta-link-primary {
+    padding: 24px 20px !important;
+    border-radius: 12px !important;
+  }
+  .approach-num { font-size: 36px !important; margin-bottom: 12px !important; }
+  .approach-title { font-size: 16px !important; }
+  .approach-desc { font-size: 13px !important; }
+  .foryou-icon { font-size: 11px !important; }
+  .foryou-title { font-size: 18px !important; }
+  .foryou-desc { font-size: 14px !important; }
+
+  /* --- Facts (About) --- */
+  .facts { padding: 64px 0 !important; }
+  .facts-inner { padding: 0 20px !important; }
+  .facts-row { grid-template-columns: 1fr !important; gap: 4px !important; padding: 20px 0 !important; }
+  .facts-k { font-size: 10px !important; padding-top: 0 !important; }
+  .facts-v { font-size: 18px !important; }
+
+  /* --- Method (About) --- */
+  .method { padding: 64px 0 !important; }
+  .method-inner { padding: 0 20px !important; }
+  .method-flow {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .method-step { min-width: auto !important; padding: 20px 16px !important; }
+  .method-arrow {
+    transform: rotate(90deg) !important;
+    padding: 8px 0 !important;
+    text-align: center !important;
+  }
+  .method-title { font-size: clamp(22px, 6vw, 28px) !important; }
+
+  /* --- Philosophy --- */
+  .article { padding: 100px 0 80px !important; }
+  .article-inner { padding: 0 20px !important; }
+  .article-title { font-size: clamp(26px, 7vw, 34px) !important; }
+  .article-body { font-size: 15px !important; }
+  .article-body h2 { font-size: clamp(20px, 5.5vw, 26px) !important; margin-top: 56px !important; }
+  .article-body blockquote { font-size: 16px !important; padding-left: 16px !important; }
+
+  /* --- Compare table --- */
+  .compare-table { font-size: 13px !important; }
+  .compare-header { display: none !important; }
+  .compare-cell { padding: 14px 16px !important; border-right: none !important; }
+  .compare-label { padding: 12px 16px 4px !important; }
+
+  /* --- Packages --- */
+  .pkg-hero { padding: 80px 0 48px !important; text-align: left !important; }
+  .pkg-title { font-size: clamp(40px, 10vw, 56px) !important; }
+  .pkg-sub { font-size: 14px !important; }
+  .pkg-sales-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .pkg-sales { padding: 28px 20px !important; }
+  .pkg-sales-name { font-size: 24px !important; }
+  .pkg-sales-price { font-size: 28px !important; }
+
+  /* --- Contact --- */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+
+  /* --- Result sheet (Session LP) --- */
+  .result-sheet { padding: 24px 16px !important; }
+  .result-sheet-header { flex-direction: column !important; gap: 12px !important; }
+  .result-grid { grid-template-columns: 1fr !important; }
+  .meter-label { width: 80px !important; font-size: 12px !important; }
+
+  /* --- Bottom bar (hero) --- */
+  .hero-bottom { bottom: 24px !important; left: 20px !important; right: 20px !important; }
+
+  /* --- CTA section --- */
+  .cta-buttons { gap: 12px !important; }
+  .cta-link-primary .cta-link-text { font-size: 18px !important; }
+  .cta-link-primary .cta-link-label { font-size: 10px !important; }
+
+  /* --- Quote --- */
+  .quote-text { font-size: clamp(22px, 5.5vw, 28px) !important; }
+
+  /* --- More link (Services page) --- */
+  .more-link-inner { padding: 0 20px !important; }
+  .more-link-title { font-size: clamp(24px, 6vw, 30px) !important; }
+
+  /* --- Privacy --- */
+  .container { padding: 80px 20px 60px !important; }
+  .warning, .contact-block { padding: 20px 16px !important; }
+
+  /* --- Journey flow --- */
+  .journey-flow { flex-direction: column !important; align-items: center !important; gap: 8px !important; }
+  .journey-step { display: flex !important; align-items: center !important; text-align: left !important; gap: 16px !important; width: 100% !important; max-width: 360px !important; }
+  .journey-icon { margin: 0 !important; flex-shrink: 0 !important; }
+  .journey-arrow { transform: rotate(90deg) !important; }
+
+  /* --- Mode selection (AI/Human) --- */
+  .mode-grid { gap: 20px !important; }
+  .mode-card { padding: 28px 20px !important; }
+  .mode-title { font-size: 24px !important; }
+  .mode-price { font-size: 32px !important; }
+
+  /* --- FAQ --- */
+  .faq-item summary { padding: 16px !important; font-size: 15px !important; }
+  .faq-body { padding: 0 16px 16px !important; font-size: 14px !important; }
+
+  /* --- Closing / About close --- */
+  .about-close { padding: 56px 0 !important; }
+  .about-close-inner { padding: 0 20px !important; }
+  .about-close-text { font-size: clamp(22px, 5.5vw, 28px) !important; }
+}
+
+/* ============================================
+   VERY NARROW (iPhone SE etc)
+   ============================================ */
+@media (max-width: 380px) {
+  h1, .hero-title, .about-hero-h { font-size: 32px !important; }
+  .hero-title { font-size: 40px !important; }
+  .svc-no { font-size: 56px !important; }
+  .pkg-title { font-size: 36px !important; }
+  .site-logo { font-size: 11px !important; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .fi { opacity: 1; transform: none; }
+}

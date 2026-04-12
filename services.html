@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services ／ KOTOBA WORKS のサービス</title>
+<meta name="description" content="Talent Session（個人向け）と Sales Partner（法人向け）。KOTOBA WORKS の2つのサービス。">
+<meta name="author" content="KOTOBA WORKS">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="https://matsumoto-rentaro.com/services.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matsumoto-rentaro.com/services.html">
+<meta property="og:title" content="Services ／ サービス ― KOTOBA WORKS">
+<meta property="og:description" content="個人・組織・未来。KOTOBA WORKS のサービス。">
+<meta property="og:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="KOTOBA WORKS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Services ／ サービス">
+<meta name="twitter:description" content="個人・組織・未来。KOTOBA WORKS のサービス。">
+<meta name="twitter:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+  main { padding-top: 68px; }
+  .services-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-top: none !important;
+  }
+  .services-hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+    width: 100%;
+  }
+  .services-eyebrow {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: clamp(40px, 6vw, 80px);
+    opacity: 0;
+    animation: fade 1s 0.2s forwards;
+  }
+  .services-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--text-light);
+    vertical-align: middle;
+    margin-right: 16px;
+  }
+  .services-title {
+    font-family: var(--en);
+    font-size: clamp(56px, 9vw, 140px);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1.15;
+    color: var(--text);
+    opacity: 0;
+    animation: fade 1.2s 0.4s forwards;
+    max-width: 900px;
+  }
+  @keyframes fade { to { opacity: 1; } }
+
+  /* Service Block */
+  .svc-block {
+    padding: clamp(100px, 14vw, 160px) 0;
+    scroll-margin-top: 100px;
+    position: relative;
+  }
+  .svc-block:nth-child(even) { background: var(--bg-warm); }
+
+  .svc-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .svc-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .svc-meta-block {
+    position: sticky;
+    top: 120px;
+  }
+  @media (max-width: 900px) {
+    .svc-meta-block { position: relative; top: auto; }
+  }
+  .svc-no {
+    font-family: var(--en);
+    font-size: clamp(100px, 14vw, 180px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    color: var(--border);
+    margin-bottom: 32px;
+    display: block;
+    user-select: none;
+  }
+  .svc-lbl {
+    font-family: var(--en);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--navy);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .svc-h {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+  .svc-tag {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-sub);
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+  .svc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 34px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .svc-btn:hover {
+    background: #15304f;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(30, 58, 95, 0.25);
+  }
+  .svc-btn .a { transition: transform 0.3s; }
+  .svc-btn:hover .a { transform: translateX(4px); }
+  .svc-btn.soon { background: var(--bg-warm); color: var(--text-light); border: 1px solid var(--border); cursor: default; pointer-events: none; }
+  .svc-btn.soon:hover { transform: none; box-shadow: none; }
+
+  /* Right: spec list */
+  .svc-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .svc-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .svc-spec-k {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+  .svc-spec-v {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+  }
+
+  /* Packages CTA — prominent card */
+  .more-link {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--bg-warm);
+  }
+  .more-link-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+  }
+  .more-link-label {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .more-link-title {
+    font-family: var(--jp);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .more-link-text {
+    font-size: 16px;
+    color: var(--text-sub);
+    line-height: 1.9;
+    margin-bottom: 40px;
+  }
+  .more-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--en);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .more-link-btn:hover {
+    background: #15304f;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(30, 58, 95, 0.25);
+  }
+  .more-link-btn span {
+    transition: transform 0.3s;
+  }
+  .more-link-btn:hover span {
+    transform: translateX(4px);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">KOTOBA WORKS</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="site-cta">Get in Touch</a>
+    <button class="site-nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="services-hero">
+  <div class="services-hero-inner">
+    <div class="services-eyebrow">Services</div>
+    <h1 class="services-title">
+      Choose<br>Your Path.
+    </h1>
+  </div>
+</section>
+
+<!-- 01: Talent Session -->
+<section class="svc-block" id="talent-session">
+  <div class="svc-inner">
+    <div class="svc-meta-block">
+      <span class="svc-no fi">01</span>
+      <span class="svc-lbl fi d1">FOR INDIVIDUALS ／ 個人向け</span>
+      <h2 class="svc-h fi d1">Talent<br>Session</h2>
+      <p class="svc-tag fi d2">30分で、才能から「真の勝ちパターン」まで言葉になる。</p>
+      <a href="session_lp.html" class="svc-btn fi d3">詳細ページを見る <span class="a">&rarr;</span></a>
+    </div>
+    <div class="svc-specs fi d2">
+      <div class="svc-spec"><span class="svc-spec-k">Duration</span><span class="svc-spec-v">30 min</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Format</span><span class="svc-spec-v">AI / Human</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Price</span><span class="svc-spec-v">FREE ／ ¥5,000</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Target</span><span class="svc-spec-v">Individuals</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Status</span><span class="svc-spec-v">Available</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02: Sales Partner -->
+<section class="svc-block" id="sales-partner">
+  <div class="svc-inner">
+    <div class="svc-meta-block">
+      <span class="svc-no fi">02</span>
+      <span class="svc-lbl fi d1">FOR ORGANIZATIONS ／ 法人向け</span>
+      <h2 class="svc-h fi d1">Sales<br>Partner</h2>
+      <p class="svc-tag fi d2">営業組織の才能から「真の勝ちパターン」まで言語化し、仕組みで生産性を上げる。</p>
+      <a href="sales_lp.html" class="svc-btn fi d3">詳細ページを見る <span class="a">&rarr;</span></a>
+    </div>
+    <div class="svc-specs fi d2">
+      <div class="svc-spec"><span class="svc-spec-k">Duration</span><span class="svc-spec-v">2w 〜 6mo</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Format</span><span class="svc-spec-v">3 Packages</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Price</span><span class="svc-spec-v">¥150,000 〜</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Target</span><span class="svc-spec-v">All Companies</span></div>
+      <div class="svc-spec"><span class="svc-spec-k">Status</span><span class="svc-spec-v">Available</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE LINK -->
+<section class="more-link">
+  <div class="more-link-inner">
+    <div class="more-link-label fi">— All Packages</div>
+    <div class="more-link-title fi d1">もっと詳しい選択肢を<br>見てみたい方へ。</div>
+    <div class="more-link-text fi d2">料金・期間・含まれる内容を<br>具体的に比較できます。</div>
+    <div class="fi d3">
+      <a href="packages.html" class="more-link-btn">ALL PACKAGES <span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+      <div class="site-footer-brand">
+        <h3>KOTOBA WORKS</h3>
+        <p>言葉にする。世界が動き出す。</p>
+      </div>
+      <div class="site-footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="session_lp.html">Talent Session</a></li>
+          <li><a href="sales_lp.html">Sales Partner</a></li>
+          <li><a href="packages.html">All Packages</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="philosophy.html">Philosophy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div class="site-footer-sign">KOTOBA WORKS</div>
+      <div class="site-footer-copy">&copy; 2026 KOTOBA WORKS.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/shared.js"></script>
+</body>
+</html>

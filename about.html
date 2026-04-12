@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About ／ KOTOBA WORKS</title>
+<meta name="description" content="KOTOBA WORKS. AIと対話を設計する、才能のプロデューサー。人と組織の才能を、AI × 対話で言葉にする。">
+<meta name="author" content="KOTOBA WORKS">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="https://matsumoto-rentaro.com/about.html">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://matsumoto-rentaro.com/about.html">
+<meta property="og:title" content="About ／ KOTOBA WORKS">
+<meta property="og:description" content="AIと対話を設計する、才能のプロデューサー。">
+<meta property="og:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="KOTOBA WORKS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About ／ KOTOBA WORKS">
+<meta name="twitter:description" content="AIと対話を設計する、才能のプロデューサー。">
+<meta name="twitter:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "KOTOBA WORKS",
+  "alternateName": "松本 蓮太郎",
+  "jobTitle": "Talent Producer",
+  "url": "https://matsumoto-rentaro.com/about.html",
+  "image": "https://matsumoto-rentaro.com/assets/og-image.png",
+  "description": "AIと対話を設計する、才能のプロデューサー。人と組織の才能を、AI × 対話で言葉にする。",
+  "knowsAbout": ["AI対話設計", "才能開発", "営業組織改革", "問いかけ型マネジメント"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tokyo",
+    "addressCountry": "JP"
+  }
+}
+</script>
+<style>
+  main { padding-top: 68px; }
+
+  /* HERO */
+  .about-hero {
+    min-height: calc(100vh - 68px);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-top: none !important;
+  }
+  .about-hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+    width: 100%;
+  }
+  .about-meta {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: clamp(48px, 6vw, 80px);
+    opacity: 0;
+    animation: fadeIn 1s 0.2s forwards;
+  }
+  .about-meta::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--text-light);
+    vertical-align: middle;
+    margin-right: 16px;
+  }
+  .about-hero-title {
+    font-family: var(--serif);
+    font-size: clamp(56px, 9vw, 164px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text);
+    opacity: 0;
+    animation: fadeIn 1.2s 0.4s forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* HERO */
+  .about-hero-section {
+    min-height: calc(100vh - 68px);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-top: none !important;
+  }
+  .about-hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+    width: 100%;
+  }
+  .about-eyebrow {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: clamp(48px, 7vw, 96px);
+    opacity: 0;
+    animation: aboutFade 1s 0.2s forwards;
+  }
+  .about-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--text-light);
+    vertical-align: middle;
+    margin-right: 16px;
+  }
+  .about-hero-h {
+    font-family: var(--en);
+    font-size: clamp(56px, 9vw, 140px);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    color: var(--text);
+    margin-bottom: clamp(32px, 4vw, 56px);
+    opacity: 0;
+    transform: translateY(40px);
+    animation: aboutSlide 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .about-hero-sub {
+    font-family: var(--jp);
+    font-size: clamp(17px, 1.8vw, 21px);
+    font-weight: 500;
+    color: var(--text-sub);
+    line-height: 1.9;
+    opacity: 0;
+    animation: aboutSlide 1s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes aboutFade { to { opacity: 1; } }
+  @keyframes aboutSlide { to { opacity: 1; transform: translateY(0); } }
+
+  /* FACTS — left-aligned, thin lines */
+  .facts {
+    padding: clamp(120px, 16vw, 200px) 0;
+    border-top: 1px solid var(--border);
+  }
+  .facts-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+  }
+  .facts-head {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: clamp(56px, 6vw, 80px);
+  }
+  .facts-grid {
+    max-width: 720px;
+  }
+  .facts-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+  }
+  .facts-row:last-child { border-bottom: 1px solid var(--border); }
+  @media (max-width: 640px) {
+    .facts-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  .facts-k {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    padding-top: 6px;
+  }
+  .facts-v {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+  }
+
+  /* METHOD — 5-element flow */
+  .method {
+    padding: clamp(120px, 16vw, 200px) 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg-warm);
+  }
+  .method-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+  }
+  .method-head {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: clamp(48px, 6vw, 72px);
+  }
+  .method-title {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.4vw, 40px);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: clamp(56px, 7vw, 80px);
+    max-width: 720px;
+  }
+  .method-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    max-width: 900px;
+  }
+  .method-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(15, 30, 60, 0.04);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s;
+  }
+  .method-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+  }
+  .method-step-final {
+    /* same as other steps — unified */
+  }
+  .method-step-num {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--terra);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .method-step-name {
+    font-family: var(--jp);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .method-arrow {
+    font-family: var(--en);
+    font-size: 18px;
+    color: var(--text-light);
+    padding: 0 12px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .method-flow {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+    .method-step { min-width: auto; }
+    .method-arrow {
+      transform: rotate(90deg);
+      padding: 8px 0;
+      text-align: center;
+    }
+  }
+  .method-close {
+    margin-top: clamp(48px, 6vw, 72px);
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.8vw, 20px);
+    color: var(--text-sub);
+    line-height: 2;
+  }
+  .method-close strong {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* About body — simple bullet-point style */
+  .about-body {
+    padding: clamp(80px, 12vw, 140px) 0;
+    border-top: 1px solid var(--border);
+  }
+  .about-body-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+  }
+  .about-block {
+    margin-bottom: 48px;
+  }
+  .about-block:last-child { margin-bottom: 0; }
+  .about-block-label {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .about-block-text {
+    font-size: 17px;
+    color: var(--text);
+    line-height: 1.9;
+    font-weight: 500;
+  }
+  .about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .about-list li {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.85;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-list li:first-child { border-top: 1px solid var(--border); }
+  .about-list li a {
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .about-list li a:hover { text-decoration: underline; }
+  .about-list-numbered {
+    counter-reset: item;
+  }
+  .about-list-numbered li {
+    counter-increment: item;
+    padding-left: 0;
+  }
+  .about-list-numbered li::before {
+    content: counter(item) ".";
+    font-family: var(--en);
+    font-weight: 700;
+    color: var(--terra);
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  .about-block-note {
+    margin-top: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+  }
+
+  /* AI × Human block */
+  .about-ai-human {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 12px;
+  }
+  .about-ai-human-title {
+    font-family: var(--en);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+  .about-ai-human-text {
+    font-size: 15px;
+    color: var(--text-sub);
+    line-height: 2;
+  }
+  .about-ai-human-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Closing link to philosophy */
+  .about-close {
+    padding: clamp(120px, 16vw, 200px) 0;
+    border-top: 1px solid var(--border);
+  }
+  .about-close-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+  }
+  .about-close-label {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .about-close-text {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.6vw, 44px);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    max-width: 900px;
+    margin-bottom: 48px;
+  }
+  .about-close-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--jp);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--text);
+    transition: gap 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .about-close-link:hover { gap: 28px; }
+
+  .fi {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .fi.v { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">KOTOBA WORKS</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="site-cta">Get in Touch</a>
+    <button class="site-nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="about-hero-section">
+  <div class="about-hero-inner">
+    <div class="about-eyebrow">About</div>
+    <h1 class="about-hero-h">What<br>We Do.</h1>
+    <p class="about-hero-sub">才能を言葉にし、世界を動かす仕組みを作る。</p>
+  </div>
+</section>
+
+<!-- ABOUT BODY -->
+<section class="about-body">
+  <div class="about-body-inner">
+
+    <div class="about-block fi">
+      <div class="about-block-label">事業概要</div>
+      <ul class="about-list">
+        <li><strong>事業内容</strong> — 個人と組織が、自分の才能で勝ち続けられる状態づくり</li>
+        <li><strong>手法</strong> — AI × 対話。対話の設計は人間、実行はAIが担う</li>
+        <li><strong>目的</strong> — 個人が自分を使いこなし、組織が持続的に勝てる状態を作る</li>
+      </ul>
+    </div>
+
+    <div class="about-block fi">
+      <div class="about-block-label">サービス</div>
+      <ul class="about-list">
+        <li><a href="session_lp.html">Talent Session</a> — 個人の才能を言語化し、定着まで支援</li>
+        <li><a href="sales_lp.html">Sales Partner</a> — 営業組織の診断から仕組み設計・内製化まで伴走</li>
+      </ul>
+    </div>
+
+    <div class="about-block fi">
+      <div class="about-block-label">対象</div>
+      <ul class="about-list">
+        <li><strong>個人</strong> — 才能を言葉にしたい人、キャリアに軸がほしい人、自分を知りたい人</li>
+        <li><strong>法人</strong> — 営業組織を変えたい経営者・管理者。「仕組みを入れたが人が動かない」企業</li>
+      </ul>
+    </div>
+
+    <div class="about-block fi">
+      <div class="about-block-label">拠点</div>
+      <p class="about-block-text">Tokyo, Japan.</p>
+    </div>
+
+    <div class="about-block fi">
+      <div class="about-block-label">なぜ AI × 人間なのか</div>
+      <ul class="about-list">
+        <li><strong>AIの役割</strong> — 対話の実行。評価されない安心感の中で、自分自身と向き合える</li>
+        <li><strong>人間の役割</strong> — 対話の設計。どの角度から言葉を投げかけるかは、人間の経験と感性でしか決められない</li>
+        <li><strong>結論</strong> — どちらが欠けても成立しない。両方を使って才能を引き出す</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="about-close">
+  <div class="about-close-inner">
+    <div class="about-close-label fi">— Read more</div>
+    <p class="about-close-text fi">
+      なぜこの事業を始めたのか、<br>
+      そしてこれから何を作りたいのか。
+    </p>
+    <a href="philosophy.html" class="about-close-link fi">
+      Philosophy を読む
+      <span>&rarr;</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+      <div class="site-footer-brand">
+        <h3>KOTOBA WORKS</h3>
+        <p>言葉にする。世界が動き出す。</p>
+      </div>
+      <div class="site-footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="session_lp.html">Talent Session</a></li>
+          <li><a href="sales_lp.html">Sales Partner</a></li>
+          <li><a href="packages.html">All Packages</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="philosophy.html">Philosophy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div class="site-footer-sign">KOTOBA WORKS</div>
+      <div class="site-footer-copy">&copy; 2026 KOTOBA WORKS.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/shared.js"></script>
+</body>
+</html>

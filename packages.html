@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Packages ／ KOTOBA WORKS</title>
+<meta name="description" content="個人向けメニュー、営業組織向けパッケージ、その他のご支援。KOTOBA WORKS の全サービス・料金一覧。">
+<meta name="author" content="KOTOBA WORKS">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="canonical" href="https://matsumoto-rentaro.com/packages.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matsumoto-rentaro.com/packages.html">
+<meta property="og:title" content="All Packages ／ KOTOBA WORKS">
+<meta property="og:description" content="個人向け、法人向け、その他。すべての選択肢。">
+<meta property="og:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="KOTOBA WORKS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="All Packages ／ KOTOBA WORKS">
+<meta name="twitter:description" content="個人向け、法人向け、その他。すべての選択肢。">
+<meta name="twitter:image" content="https://matsumoto-rentaro.com/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+  .pkg-hero {
+    padding: 160px 0 60px;
+    text-align: center;
+    border-top: none !important;
+  }
+  .pkg-eyebrow {
+    font-family: var(--en);
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    color: var(--navy);
+    margin-bottom: 40px;
+  }
+  .pkg-title {
+    font-family: var(--en);
+    font-size: clamp(48px, 7.5vw, 120px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+  .pkg-title .accent {
+    color: var(--navy);
+  }
+  .pkg-sub {
+    font-size: 17px;
+    color: var(--text-sub);
+    margin-top: 28px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Section labels */
+  .pkg-section {
+    padding: clamp(80px, 10vw, 120px) 0;
+  }
+  .pkg-section:nth-child(even) { background: var(--bg-warm); }
+  .pkg-section-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .pkg-section-lbl {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--terra);
+    margin-bottom: 16px;
+  }
+  .pkg-section-h {
+    font-size: clamp(32px, 4.2vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  /* Card Grid — 2 cols for individual, 3 cols for others */
+  .pkg-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .pkg-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .pkg-grid-2, .pkg-grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .pkg-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pkg-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--navy), var(--terra));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pkg-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  .pkg-card:hover::before { transform: scaleX(1); }
+
+  .pkg-card-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .pkg-card-meta {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 18px;
+  }
+  .pkg-card-price {
+    font-family: var(--en);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .pkg-card-price .unit {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-left: 4px;
+  }
+
+  /* Sales Team Packages (featured) */
+  .pkg-sales-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .pkg-sales-grid { grid-template-columns: 1fr; }
+  }
+  .pkg-sales {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 44px 36px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pkg-sales::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--navy), var(--terra));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pkg-sales:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+  }
+  .pkg-sales:hover::before { transform: scaleX(1); }
+  .pkg-sales.featured {
+    border: 2px solid var(--navy);
+    transform: translateY(-6px);
+  }
+  .pkg-sales.featured::after {
+    content: 'RECOMMENDED';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: var(--en);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #fff;
+    background: var(--navy);
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .pkg-sales-name {
+    font-family: var(--en);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .pkg-sales-tagline {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 24px;
+  }
+  .pkg-sales-price {
+    font-family: var(--en);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pkg-sales-duration {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pkg-sales-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+  }
+  .pkg-sales-list li {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.8;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .pkg-sales-list li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--navy);
+  }
+  .pkg-sales-for {
+    font-size: 11px;
+    color: var(--text-light);
+    padding: 14px 0 0;
+    border-top: 1px dashed var(--border);
+    line-height: 1.7;
+  }
+  .pkg-sales-for strong {
+    display: block;
+    font-family: var(--en);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-sub);
+    margin-bottom: 4px;
+    font-size: 10px;
+  }
+
+  /* CTA */
+  .pkg-cta {
+    padding: clamp(80px, 10vw, 120px) 0;
+    text-align: center;
+  }
+  .pkg-cta-h {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">KOTOBA WORKS</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="site-cta">Get in Touch</a>
+    <button class="site-nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="pkg-hero">
+  <div class="pkg-eyebrow fi">— ALL PACKAGES —</div>
+  <h1 class="pkg-title fi d1">
+    Pricing &<br>
+    <span class="accent">Plans.</span>
+  </h1>
+  <p class="pkg-sub fi d2">対象と目的に応じた、具体的なメニュー。</p>
+</section>
+
+<!-- FOR INDIVIDUALS -->
+<section class="pkg-section">
+  <div class="container">
+    <div class="pkg-section-head">
+      <div class="pkg-section-lbl fi">FOR INDIVIDUALS</div>
+      <h2 class="pkg-section-h fi d1">個人向けメニュー</h2>
+    </div>
+    <div class="pkg-grid-3">
+      <div class="pkg-card fi d1">
+        <div class="pkg-card-name">Single</div>
+        <div class="pkg-card-meta">Session 1 のみ（KNOW）</div>
+        <div class="pkg-card-price">FREE<span class="unit"> or ¥5,000</span></div>
+        <a href="session_lp.html" class="pkg-card-cta" style="display:inline-block;margin-top:16px;font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--navy);padding-bottom:4px;">詳細を見る →</a>
+      </div>
+      <div class="pkg-card fi d2">
+        <div class="pkg-card-name">Complete</div>
+        <div class="pkg-card-meta">Session 1〜3（KNOW → DRIVE → FLOW）</div>
+        <div class="pkg-card-price">¥30,000</div>
+        <a href="session_lp.html" class="pkg-card-cta" style="display:inline-block;margin-top:16px;font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--navy);padding-bottom:4px;">詳細を見る →</a>
+      </div>
+      <div class="pkg-card fi d3">
+        <div class="pkg-card-name">Partner</div>
+        <div class="pkg-card-meta">Complete + 実行中の伴走</div>
+        <div class="pkg-card-price">¥15,000<span class="unit">/ 月</span></div>
+        <a href="session_lp.html" class="pkg-card-cta" style="display:inline-block;margin-top:16px;font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--navy);padding-bottom:4px;">詳細を見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR SALES TEAMS -->
+<section class="pkg-section">
+  <div class="container">
+    <div class="pkg-section-head">
+      <div class="pkg-section-lbl fi">FOR SALES TEAMS</div>
+      <h2 class="pkg-section-h fi d1">営業組織向けパッケージ</h2>
+    </div>
+    <div class="pkg-sales-grid">
+
+      <div class="pkg-sales fi d1">
+        <div class="pkg-sales-name">Starter</div>
+        <div class="pkg-sales-tagline">まず知る</div>
+        <div class="pkg-sales-price">¥150,000</div>
+        <div class="pkg-sales-duration">2〜4 weeks</div>
+        <ul class="pkg-sales-list">
+          <li>営業組織診断（業務棚卸し + 課題特定）</li>
+          <li>全メンバーへのヒアリング</li>
+          <li>5要素診断レポート（組織の才能・勝ちパターン・暴走・暴走パターン・抑制の型）</li>
+          <li>90分の経営者フィードバック面談</li>
+        </ul>
+        <div class="pkg-sales-for">
+          <strong>RECOMMENDED FOR</strong>
+          営業組織に課題がありそうだが、何が問題かわからない経営者
+        </div>
+      </div>
+
+      <div class="pkg-sales featured fi d2">
+        <div class="pkg-sales-name">Standard</div>
+        <div class="pkg-sales-tagline">変える</div>
+        <div class="pkg-sales-price">¥1,200,000</div>
+        <div class="pkg-sales-duration">3 months ／ 月額¥400,000 × 3ヶ月</div>
+        <ul class="pkg-sales-list">
+          <li>Starterの全内容</li>
+          <li>真の勝ちパターン設計（5要素を運用ルールに翻訳）</li>
+          <li>エンゲージメント向上セッション(全メンバー)</li>
+          <li>KPI設計 + 業務フロー再設計</li>
+          <li>マネジメント研修(半日×2回)</li>
+          <li>月額営業顧問(月4回MTG + チャット無制限)</li>
+          <li>AI導入設計</li>
+        </ul>
+        <div class="pkg-sales-for">
+          <strong>RECOMMENDED FOR</strong>
+          「仕組みは入れたが人が動かない」「離職率が高い」経営者・営業部長
+        </div>
+      </div>
+
+      <div class="pkg-sales fi d3">
+        <div class="pkg-sales-name">Premium</div>
+        <div class="pkg-sales-tagline">任せる</div>
+        <div class="pkg-sales-price">¥4,800,000</div>
+        <div class="pkg-sales-duration">6 months ／ 月額¥800,000 × 6ヶ月</div>
+        <ul class="pkg-sales-list">
+          <li>Standardの全内容</li>
+          <li>資産になるBPO(MVP級メンバーの営業代行)</li>
+          <li>営業ノウハウ横展開(スクリプト・フロー作成)</li>
+          <li>内製化伴走(代行→移植→自走)</li>
+          <li>月次成果レポート</li>
+          <li>経営者との週次MTG</li>
+        </ul>
+        <div class="pkg-sales-for">
+          <strong>RECOMMENDED FOR</strong>
+          「営業組織をゼロから作り直したい」「代行も含めて丸ごと任せたい」経営者
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OTHER SERVICES -->
+<section class="pkg-section">
+  <div class="container">
+    <div class="pkg-section-head">
+      <div class="pkg-section-lbl fi">OTHER SERVICES</div>
+      <h2 class="pkg-section-h fi d1">営業組織以外のご支援</h2>
+    </div>
+    <div class="pkg-grid-3">
+      <div class="pkg-card fi d1">
+        <div class="pkg-card-name">経営者の軸・ビジョン言語化</div>
+        <div class="pkg-card-meta">経営者自身の才能・動機・判断基準を言葉にする</div>
+        <div class="pkg-card-price">¥300,000<span class="unit">〜 / 1回</span></div>
+      </div>
+      <div class="pkg-card fi d2">
+        <div class="pkg-card-name">新規事業の壁打ちパートナー</div>
+        <div class="pkg-card-meta">事業アイデアの壁打ち + 市場検証 + 実行計画の設計</div>
+        <div class="pkg-card-price">¥200,000<span class="unit">〜 / 月</span></div>
+      </div>
+      <div class="pkg-card fi d3">
+        <div class="pkg-card-name">採用ブランディング支援</div>
+        <div class="pkg-card-meta">採用ターゲットに刺さる言葉・メッセージの設計</div>
+        <div class="pkg-card-price">¥300,000<span class="unit">〜 / 1回</span></div>
+      </div>
+      <div class="pkg-card fi d3">
+        <div class="pkg-card-name">エンゲージメント改善コンサル</div>
+        <div class="pkg-card-meta">メンバーの意味づけ + チーム設計 + 定着支援</div>
+        <div class="pkg-card-price">¥300,000<span class="unit">〜 / 月</span></div>
+      </div>
+      <div class="pkg-card fi d3">
+        <div class="pkg-card-name">チームビルディング研修</div>
+        <div class="pkg-card-meta">チームの才能マッピング + 相互理解 + 役割最適化</div>
+        <div class="pkg-card-price">¥300,000<span class="unit">〜 / 回</span></div>
+      </div>
+      <div class="pkg-card fi d3">
+        <div class="pkg-card-name">HP / LP 制作</div>
+        <div class="pkg-card-meta">AI × 人間の設計で、事業の世界観をサイトに落とし込む</div>
+        <div class="pkg-card-price">¥300,000<span class="unit">〜</span></div>
+        <div class="pkg-card-meta" style="margin-top:8px;font-size:12px;color:var(--text-light);">アニメーション・モーション追加：別途見積 ／ SEO対策：月額費用</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="pkg-cta">
+  <h2 class="pkg-cta-h fi">気になる選択肢があれば、<br>まずはご相談ください。</h2>
+  <div class="fi d1">
+    <a href="contact.html" class="btn-primary">Contact <span class="btn-primary-arrow">&rarr;</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+      <div class="site-footer-brand">
+        <h3>KOTOBA WORKS</h3>
+        <p>言葉にする。世界が動き出す。</p>
+      </div>
+      <div class="site-footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="session_lp.html">Talent Session</a></li>
+          <li><a href="sales_lp.html">Sales Partner</a></li>
+          <li><a href="packages.html">All Packages</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="philosophy.html">Philosophy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="site-footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <div class="site-footer-sign">KOTOBA WORKS</div>
+      <div class="site-footer-copy">&copy; 2026 KOTOBA WORKS.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/shared.js"></script>
+</body>
+</html>

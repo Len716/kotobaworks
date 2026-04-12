@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5要素カード + 壁紙ジェネレーター ／ KOTOBA WORKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --navy: #1e3a5f;
+    --terra: #c4643a;
+    --text: #1a1a1a;
+    --text-sub: #555;
+    --text-light: #999;
+    --border: #e5e3df;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #f0ede8;
+    color: var(--text);
+    padding: 40px 20px;
+  }
+  h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .desc { color: var(--text-sub); margin-bottom: 32px; font-size: 14px; }
+
+  /* Form */
+  .form { max-width: 600px; margin-bottom: 48px; }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--navy);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #fff;
+  }
+  .field textarea { height: 60px; resize: vertical; }
+  button.gen {
+    padding: 14px 36px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+  button.gen:hover { background: #15304f; }
+
+  /* Output */
+  .output { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 48px; }
+
+  /* Card (1080x1080) */
+  .card-wrap {
+    width: 360px;
+    height: 360px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .card-canvas {
+    width: 1080px;
+    height: 1080px;
+    transform: scale(0.3333);
+    transform-origin: top left;
+    background: var(--bg);
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .card-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--terra);
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+  .card-title {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+  .card-body {
+    font-size: 32px;
+    color: var(--text-sub);
+    line-height: 1.8;
+  }
+  .card-footer {
+    position: absolute;
+    bottom: 80px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+  }
+  .card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* Wallpaper (1170x2532 iPhone) */
+  .wp-wrap {
+    width: 180px;
+    height: 390px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .wp-canvas {
+    width: 1170px;
+    height: 2532px;
+    transform: scale(0.1538);
+    transform-origin: top left;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 200px 120px;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .wp-text {
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 80px;
+  }
+  .wp-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: var(--text-light);
+    letter-spacing: 0.2em;
+  }
+
+  /* Download buttons */
+  .dl-btns { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .dl-btn {
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .dl-btn:hover { background: var(--bg); }
+
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<h1>5要素カード + 壁紙ジェネレーター</h1>
+<p class="desc">セッション結果を入力すると、5要素カード（画像4枚）とスマホ壁紙を生成します。右クリック → 保存 でダウンロード。</p>
+
+<div class="form">
+  <div class="field">
+    <label>01. 才能</label>
+    <input type="text" id="f-talent" placeholder="例：本質を見抜く力">
+  </div>
+  <div class="field">
+    <label>02. 勝ちパターン</label>
+    <textarea id="f-pattern" placeholder="例：本質を見抜く → 量で掴む → ピンポイントで見つける → 未来を描いて動かす"></textarea>
+  </div>
+  <div class="field">
+    <label>03. 欠点（才能の暴走）</label>
+    <input type="text" id="f-weakness" placeholder="例：動きすぎる。止まれない。">
+  </div>
+  <div class="field">
+    <label>05. 抑制の型（壁紙用）</label>
+    <input type="text" id="f-brake" placeholder="例：動く前に「共有してからか？」を1秒問う">
+  </div>
+  <button class="gen" onclick="generate()">生成する</button>
+</div>
+
+<div class="section-title">— 5要素カード（4枚）</div>
+<div class="output" id="cards"></div>
+
+<div class="section-title">— スマホ壁紙</div>
+<div class="output" id="wallpaper"></div>
+
+<script>
+function generate() {
+  var talent = document.getElementById('f-talent').value || '（未入力）';
+  var pattern = document.getElementById('f-pattern').value || '（未入力）';
+  var weakness = document.getElementById('f-weakness').value || '（未入力）';
+  var brake = document.getElementById('f-brake').value || '（未入力）';
+
+  var cards = document.getElementById('cards');
+  cards.innerHTML = '';
+
+  var data = [
+    { num: '01', label: 'TALENT', title: '才能', body: talent },
+    { num: '02', label: 'WIN PATTERN', title: '勝ちパターン', body: pattern },
+    { num: '03', label: 'OVERDRIVE', title: '欠点', body: weakness },
+    { num: '05', label: 'BRAKE SYSTEM', title: '抑制の型', body: brake }
+  ];
+
+  data.forEach(function(d) {
+    var wrap = document.createElement('div');
+    wrap.className = 'card-wrap';
+    wrap.innerHTML = '<div class="card-canvas">' +
+      '<div class="card-num">' + d.num + ' ／ ' + d.label + '</div>' +
+      '<div class="card-title">' + d.title + '</div>' +
+      '<div class="card-body">' + d.body.replace(/\n/g, '<br>') + '</div>' +
+      '<div class="card-footer"><div class="card-logo">KOTOBA WORKS</div><div class="card-label">Talent Session</div></div>' +
+      '</div>';
+    cards.appendChild(wrap);
+  });
+
+  // Wallpaper
+  var wp = document.getElementById('wallpaper');
+  wp.innerHTML = '';
+  var wpWrap = document.createElement('div');
+  wpWrap.className = 'wp-wrap';
+  wpWrap.innerHTML = '<div class="wp-canvas">' +
+    '<div class="wp-text">' + brake + '</div>' +
+    '<div class="wp-sub">— KOTOBA WORKS</div>' +
+    '</div>';
+  wp.appendChild(wpWrap);
+}
+</script>
+</body>
+</html>

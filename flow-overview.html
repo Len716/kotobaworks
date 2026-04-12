@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talent Session ／ ユーザーフロー全体像</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --navy: #1e3a5f;
+    --terra: #c4643a;
+    --text: #1a1a1a;
+    --text-sub: #555;
+    --text-light: #999;
+    --border: #e5e3df;
+    --en: 'Inter', sans-serif;
+    --jp: 'Noto Sans JP', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--jp); line-height: 1.8; }
+
+  .page { max-width: 900px; margin: 0 auto; padding: 80px 32px 120px; }
+
+  h1 {
+    font-family: var(--en);
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .subtitle { font-size: 16px; color: var(--text-sub); margin-bottom: 64px; }
+
+  /* Phase */
+  .phase {
+    position: relative;
+    padding-left: 48px;
+    padding-bottom: 64px;
+    border-left: 2px solid var(--border);
+  }
+  .phase:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 3px solid var(--bg);
+  }
+  .phase:nth-child(2)::before { background: #3a5d80; }
+  .phase:nth-child(3)::before { background: #7a6a5a; }
+  .phase:nth-child(4)::before { background: var(--terra); }
+
+  .phase-label {
+    font-family: var(--en);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .phase-name {
+    font-family: var(--en);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .phase:nth-child(2) .phase-name { color: #3a5d80; }
+  .phase:nth-child(3) .phase-name { color: #7a6a5a; }
+  .phase:nth-child(4) .phase-name { color: var(--terra); }
+
+  .phase-jp {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .step {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 12px;
+  }
+  .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+  .step-tag {
+    display: inline-block;
+    font-family: var(--en);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-session { background: rgba(30,58,95,0.08); color: var(--navy); }
+  .tag-deliver { background: rgba(196,100,58,0.08); color: var(--terra); }
+  .tag-auto { background: rgba(122,106,90,0.08); color: #7a6a5a; }
+  .tag-ongoing { background: rgba(196,100,58,0.12); color: var(--terra); }
+
+  .phase-timing {
+    font-family: var(--en);
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .divider {
+    text-align: center;
+    padding: 40px 0;
+    font-family: var(--en);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--text-light);
+  }
+  .divider span {
+    display: inline-block;
+    padding: 8px 24px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+
+  .summary {
+    margin-top: 64px;
+    padding: 40px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .summary h2 {
+    font-family: var(--en);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .summary-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-k {
+    font-family: var(--en);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>User Flow.</h1>
+<p class="subtitle">Talent Session（個人向け）のユーザー体験フロー。申し込みから自走までの全体像。</p>
+
+<!-- ============ KNOW ============ -->
+<div class="phase">
+  <div class="phase-label">SESSION 1 ／ DAY 0</div>
+  <div class="phase-name">KNOW</div>
+  <div class="phase-jp">自分を知る</div>
+  <div class="phase-timing">所要時間：30分</div>
+
+  <div class="step">
+    <span class="step-tag tag-session">SESSION</span>
+    <div class="step-title">30分の対話で、5要素を言語化する</div>
+    <div class="step-desc">
+      AI または人間との対話。以下の5つを、あなた自身の言葉で引き出す。<br>
+      ① 才能　② 勝ちパターン　③ 欠点（才能の暴走）　④ 暴走パターン　⑤ 抑制の型
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-deliver">DELIVER</span>
+    <div class="step-title">渡すもの</div>
+    <div class="step-desc">
+      ・5要素 診断レポート（PDF / テキスト）<br>
+      ・5要素カード（画像4枚 — スマホ保存用）<br>
+      ・スマホ壁紙（抑制の型を1行で）<br>
+      → この3点で「毎日目に入る環境」を作る
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-auto">OPERATION</span>
+    <div class="step-title">運営側の作業フロー</div>
+    <div class="step-desc">
+      <strong>1. セッション実施</strong>（30分 — AI or Human）<br>
+      <strong>2. 結果をジェネレーターに入力</strong>（<a href="talent-card-generator.html" style="color:var(--navy);">talent-card-generator.html</a> を開き、5要素を入力）<br>
+      <strong>3. カード4枚 + 壁紙が自動生成</strong>（右クリック → 保存 or スクショ）<br>
+      <strong>4. レポート + カード + 壁紙をまとめて送信</strong>（メール or LINE）<br>
+      <strong>5. 30日後リマインドメールを予約送信</strong>（Gmail で日時指定）<br>
+      → 所要時間：セッション後 約10分
+    </div>
+  </div>
+</div>
+
+<!-- ============ 日常（2週間） ============ -->
+<div class="divider"><span>2週間の日常生活（壁紙を毎日見る）</span></div>
+
+<!-- ============ DRIVE ============ -->
+<div class="phase">
+  <div class="phase-label">SESSION 2 ／ DAY 14〜21</div>
+  <div class="phase-name">DRIVE</div>
+  <div class="phase-jp">何で動く人間かを知る</div>
+  <div class="phase-timing">所要時間：30分</div>
+
+  <div class="step">
+    <span class="step-tag tag-session">SESSION</span>
+    <div class="step-title">2週間を振り返り、動機・原動力を言語化する</div>
+    <div class="step-desc">
+      「この2週間で何に反応した？ 何に燃えた？ 何にイラッとした？」<br>
+      才能を知った状態で過ごした日常を振り返り、自分のエンジン（動機）を言葉にする。
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-deliver">DELIVER</span>
+    <div class="step-title">渡すもの</div>
+    <div class="step-desc">
+      ・動機レポート（何がエンジンで、何がブレーキか）<br>
+      ・5要素 + 動機を統合した「取扱説明書 v2」
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-auto">OPERATION</span>
+    <div class="step-title">運営側の作業フロー</div>
+    <div class="step-desc">
+      <strong>1. セッション実施</strong>（30分）<br>
+      <strong>2. 動機レポートを作成</strong>（Session 1 のレポートに動機セクションを追加 → v2 として統合）<br>
+      <strong>3. v2 レポートを送信</strong><br>
+      → 所要時間：セッション後 約15分
+    </div>
+  </div>
+</div>
+
+<!-- ============ 日常（1ヶ月） ============ -->
+<div class="divider"><span>約1ヶ月の実行・検証期間</span></div>
+
+<!-- ============ FLOW ============ -->
+<div class="phase">
+  <div class="phase-label">SESSION 3 ／ DAY 45〜60</div>
+  <div class="phase-name">FLOW</div>
+  <div class="phase-jp">熱中できる条件を知る</div>
+  <div class="phase-timing">所要時間：30分 ＋ 熱中診断</div>
+
+  <div class="step">
+    <span class="step-tag tag-session">SESSION</span>
+    <div class="step-title">熱中診断 ＋ 対話で、熱中条件を特定する</div>
+    <div class="step-desc">
+      Session 1〜2 の結果を熱中診断に入れ込み、<br>
+      「どんな環境・条件・人・タスクで自分はフローに入るのか」を可視化する。
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-deliver">DELIVER</span>
+    <div class="step-title">渡すもの</div>
+    <div class="step-desc">
+      ・熱中条件レポート<br>
+      ・Before / After 比較（Session 1 時点 vs 今）<br>
+      ・完全版「取扱説明書 v3」（才能 × 動機 × 熱中条件 × 真の勝ちパターン）
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-auto">OPERATION</span>
+    <div class="step-title">運営側の作業フロー</div>
+    <div class="step-desc">
+      <strong>1. 熱中診断を事前に送付</strong>（Session 3 の前に、ユーザーに回答してもらう）<br>
+      <strong>2. Session 1〜2 の結果 + 熱中診断の回答を統合</strong><br>
+      <strong>3. セッション実施</strong>（30分 — 熱中条件の言語化 + Before/After 比較）<br>
+      <strong>4. 完全版レポート v3 を作成</strong>（才能 × 動機 × 熱中条件 × 真の勝ちパターン）<br>
+      <strong>5. 送信</strong><br>
+      → 所要時間：セッション後 約20分 + 事前準備10分
+    </div>
+  </div>
+</div>
+
+<!-- ============ 準備完了ライン ============ -->
+<div class="divider"><span>PREPARATION COMPLETE — 準備完了</span></div>
+
+<!-- ============ RUN ============ -->
+<div class="phase">
+  <div class="phase-label">DAY 60〜 ／ MONTHLY</div>
+  <div class="phase-name">RUN</div>
+  <div class="phase-jp">才能を活かして動き続ける</div>
+  <div class="phase-timing">月額制（任意）</div>
+
+  <div class="step">
+    <span class="step-tag tag-ongoing">ONGOING</span>
+    <div class="step-title">月1チェックイン（30分）</div>
+    <div class="step-desc">
+      「今月、勝ちパターンと暴走、どっちが多かった？」を振り返る。<br>
+      壁にぶつかった時の方向修正。5要素のアップデート。
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-ongoing">ONGOING</span>
+    <div class="step-title">チャット相談（随時）</div>
+    <div class="step-desc">
+      実行中に迷った時、テキストで相談。24時間以内に返信。<br>
+      「この場面、暴走しそうだけどどうすべき？」に答える。
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-tag tag-auto">QUARTERLY</span>
+    <div class="step-title">四半期レビュー</div>
+    <div class="step-desc">
+      3ヶ月ごとに5要素を再診断。環境が変わっても、才能の使い方を更新し続ける。
+    </div>
+  </div>
+</div>
+
+<!-- ============ SUMMARY ============ -->
+<div class="summary">
+  <h2>PRICING SUMMARY</h2>
+  <div class="summary-row">
+    <div class="summary-k">Single</div>
+    <div>Session 1（KNOW）のみ — FREE（AI）／ ¥5,000（Human）</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-k">Complete</div>
+    <div>Session 1〜3（KNOW → DRIVE → FLOW）— ¥30,000</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-k">Partner</div>
+    <div>Complete + 実行中の伴走（RUN）— ¥15,000 / 月</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-k">30日後</div>
+    <div>リマインドメール（自動・全プラン共通）</div>
+  </div>
+  <div class="summary-row">
+    <div class="summary-k">渡すもの</div>
+    <div>診断レポート ／ 5要素カード ／ スマホ壁紙 ／ 取扱説明書（Complete以上）</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

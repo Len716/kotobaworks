@@ -1,0 +1,6 @@
+# Netlify → Vercel 完全移行 (2026-05-03 開始)
+# HANDOFF_KW_hp_full_redesign_integrated_20260503.md §11 準拠
+#
+# 全ルートを kotoba-works.vercel.app へ 301 (permanent redirect)
+# 6/3 (30 日経過後) に Netlify サイト完全削除予定
+/*  https://kotoba-works.vercel.app/:splat  301!
